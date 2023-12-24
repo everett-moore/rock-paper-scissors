@@ -1,3 +1,6 @@
+let playerScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
   const choices = ["Rock", "Paper", "Scissors"];
   let random = Math.floor(Math.random() * 3);
@@ -21,27 +24,63 @@ function playRound(playerSelection, computerSelection) {
   if (playerSelection == "Rock") {
     if (computerSelection == "Paper") {
       console.log("You Lose! Paper beats Rock");
+      computerScore++;
     }
     if (computerSelection == "Scissors") {
       console.log("You Win! Rock beats scissors");
+      playerScore++;
     }
   }
 
   if (playerSelection == "Paper") {
     if (computerSelection == "Scissors") {
       console.log("You Lose! Scissors beats Paper");
+      computerScore++;
     }
     if (computerSelection == "Rock") {
       console.log("You Win! Paper beats Rock");
+      playerScore++;
     }
   }
 
   if (playerSelection == "Scissors") {
     if (computerSelection == "Rock") {
       console.log("You Lose! Rock beats Scissors");
+      computerScore++;
     }
     if (computerSelection == "Paper") {
       console.log("You Win! Scissors beats Paper");
+      playerScore++;
     }
   }
 }
+
+function game() {
+  for (let game = 0; game < 5; game++) {
+    playRound(prompt("Rock, paper, or scissors?"), getComputerChoice());
+  }
+
+  if (playerScore > computerScore) {
+    console.log(
+      "You Win! " +
+        "Final score: " +
+        "You: " +
+        playerScore +
+        " " +
+        "Computer: " +
+        computerScore
+    );
+  } else {
+    console.log(
+      "You Lose! " +
+        "Final score: " +
+        "You: " +
+        playerScore +
+        " " +
+        "Computer: " +
+        computerScore
+    );
+  }
+}
+
+game();
