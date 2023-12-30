@@ -1,1 +1,1 @@
-Simple rock paper scissors game. User inputs through prompt and results are displayed in the console.
+Simple rock paper scissors game, now with a simple UI.
