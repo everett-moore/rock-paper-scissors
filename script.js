@@ -56,10 +56,6 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-  for (let game = 0; game < 5; game++) {
-    playRound(prompt("Rock, paper, or scissors?"), getComputerChoice());
-  }
-
   if (playerScore > computerScore) {
     console.log(
       "You Win! " +
@@ -82,5 +78,17 @@ function game() {
     );
   }
 }
+
+const container = document.querySelector("#container");
+const btnRock = document.createElement("button");
+btnRock.textContent = "Rock";
+const btnPaper = document.createElement("button");
+btnPaper.textContent = "Paper";
+const btnScissors = document.createElement("button");
+btnScissors.textContent = "Scissors";
+
+container.appendChild(btnRock);
+container.appendChild(btnPaper);
+container.appendChild(btnScissors);
 
 game();
