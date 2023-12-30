@@ -87,6 +87,13 @@ btnPaper.textContent = "Paper";
 const btnScissors = document.createElement("button");
 btnScissors.textContent = "Scissors";
 
+btnRock.addEventListener("click", playRound("Rock", getComputerChoice()));
+btnPaper.addEventListener("click", playRound("Paper", getComputerChoice()));
+btnScissors.addEventListener(
+  "click",
+  playRound("Scissors", getComputerChoice())
+);
+
 container.appendChild(btnRock);
 container.appendChild(btnPaper);
 container.appendChild(btnScissors);
