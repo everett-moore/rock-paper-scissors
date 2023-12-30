@@ -1,7 +1,7 @@
 let playerScore = 0;
 let computerScore = 0;
-playerSelection = null;
 
+const score = document.querySelector("#score");
 const state = document.querySelector("#state");
 const results = document.querySelector("#results");
 results.textContent = "Click a button to start playing!";
@@ -38,34 +38,56 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
   state.textContent =
     "You: " + playerSelection + " " + "Computer: " + computerSelection;
-  if (playerSelection == computerSelection) {
-    results.textContent = "It's a tie!";
-  }
+  score.textContent = `Score- You: ${playerScore} Computer: ${computerScore}`;
 
   if (playerSelection == "Rock") {
     if (computerSelection == "Paper") {
       results.textContent = "You Lose! Paper beats Rock";
+      computerScore++;
     }
     if (computerSelection == "Scissors") {
       results.textContent = "You Win! Rock beats Scissors";
+      playerScore++;
+    }
+    if (playerSelection == computerSelection) {
+      results.textContent = "It's a tie!";
     }
   }
 
   if (playerSelection == "Paper") {
     if (computerSelection == "Scissors") {
       results.textContent = "You Lose! Scissors beats paper";
+      computerScore++;
     }
     if (computerSelection == "Rock") {
       results.textContent = "You Win! Paper beats Rock";
+      playerScore++;
+    }
+    if (playerSelection == computerSelection) {
+      results.textContent = "It's a tie!";
     }
   }
-}
 
-if (playerSelection == "Scissors") {
-  if (computerSelection == "Rock") {
-    results.textContent = "You Lose! Rock beats Scissors";
+  if (playerSelection == "Scissors") {
+    if (computerSelection == "Rock") {
+      results.textContent = "You Lose! Rock beats Scissors";
+      computerScore++;
+    }
+    if (computerSelection == "Paper") {
+      results.textContent = "You Win! Scissors beats Paper";
+      playerScore++;
+    }
+    if (playerSelection == computerSelection) {
+      results.textContent = "It's a tie!";
+    }
   }
-  if (computerSelection == "Paper") {
-    results.textContent = "You Win! Scissors beats Paper";
+
+  const final = document.querySelector("#final");
+  if (playerScore == 5 || computerScore == 5) {
+    if (playerScore > computerScore) {
+      final.textContent = "You Win!";
+    } else {
+      final.textContent = "You Lose!";
+    }
   }
 }
